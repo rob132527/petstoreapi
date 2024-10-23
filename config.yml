@@ -1,0 +1,17 @@
+version: 2.1
+
+jobs:
+  test:
+    docker:
+      - image: postman/newman:alpine
+    steps:
+      - checkout
+      - run:
+          name: Run Postman tests
+          command: newman run C:/Users/Rbriones/Documents/PetstoreFiles/SwaggerPetstore.postman_collection.json
+
+workflows:
+  version: 2
+  test:
+    jobs:
+      - test
